@@ -4,23 +4,81 @@ import {
 } from 'react-native';
 
 const style = StyleSheet.create({
-    centerAlign: { alignItems: 'center', justifyContent: 'center' },
-    marginSide: { marginLeft: "3%", marginRight: "3%" },
-    kbFont: { fontFamily: "KBHand2019" },
-    largeText: { fontSize: 21 },
-    middleText: { fontSize: 17 },
-    smallText: { fontSize: 14 },
-    whereViewContainer: { height: 20, marginTop : 30 },
-    whereViewButtonContainer: { marginTop: 20, marginBottom: 20, height: 65, flexDirection: "row" },
-    whereViewButtonDirection: { flex: 1, flexDirection: "row" },
-    topMenuButton: { marginRight: 5, width: "30%", height: 32, borderRadius: 10 },
-    
-    jackPotContainer: { flexDirection: 'row', marginBottom: 36 },
-    jackPotRollerContainer: { flexDirection: "row", backgroundColor: "#3E3E3E",  marginLeft: 25, marginRight: 25 },
-    jackPotTextContainer: { flexDirection: "row", alignItems: 'center', marginLeft: 25 },
-    jackPotRollerMenuContainer: { flex: 1, marginLeft: 3, backgroundColor: "#FFFFFF", marginRight: 3, overflow: "hidden" },
-    jackPotRollerMenu: {position:'absolute', marginTop: 5, marginLeft: "5%", marginRight: "5%", height: 50, width: "90%", borderRadius: 3},
-    jackPotHandllerContainer:  {alignItems:'center', justifyContent: 'flex-end'}
+    centerAlign: { 
+        alignItems: 'center', 
+        justifyContent: 'center' 
+    },
+    marginSide: { 
+        marginLeft: "3%", 
+        marginRight: "3%" 
+    },
+    kbFont: { 
+        fontFamily: "KBHand2019" 
+    },
+    largeText: { 
+        fontSize: 21 
+    },
+    middleText: { 
+        fontSize: 17 
+    },
+    smallText: { 
+        fontSize: 14 
+    },
+    whereViewContainer: { 
+        height: 20,
+        marginTop : 30 
+    },
+    whereViewButtonContainer: { 
+        marginTop: 20,
+        marginBottom: 20, 
+        height: 65, 
+        flexDirection: "row" 
+    },
+    whereViewButtonDirection: { 
+        flex: 1, 
+        flexDirection: "row" 
+    },
+    topMenuButton: { 
+        marginRight: 5, 
+        width: "30%", 
+        height: 32, 
+        borderRadius: 10 
+    },
+    jackPotContainer: { 
+        flexDirection: 'row', 
+        marginBottom: 36 
+    },
+    jackPotRollerContainer: { 
+        flexDirection: "row", 
+        backgroundColor: "#3E3E3E",  
+        marginLeft: 25, 
+        marginRight: 25 
+    },
+    jackPotTextContainer: { 
+        flexDirection: "row", 
+        alignItems: 'center',
+        marginLeft: 25 
+    },
+    jackPotRollerMenuContainer: { 
+        flex: 1, 
+        marginLeft: 3, 
+        backgroundColor: "#FFFFFF",
+        marginRight: 3, 
+        overflow: "hidden" 
+    },
+    jackPotRollerMenu: {
+        position:'absolute', 
+        marginTop: 5, 
+        marginLeft: "5%", 
+        marginRight: "5%", 
+        height: 50, 
+        width: "90%",
+        borderRadius: 3
+    },
+    jackPotHandllerContainer: {
+        alignItems:'center', 
+        justifyContent: 'flex-end'
+    }
 })
 
 function WhereView(props) {
