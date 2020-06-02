@@ -251,12 +251,49 @@ function JackPotMenu(props) {
 }
 
 function JackPotHandler(props) {
+    let imageList = [
+        <Image style={{width: 36, height: 113, resizeMode: 'contain'}} source={require('./asset/ReRoll.png')}/>,
+        <Image style={{width: 36, height: 113, resizeMode: 'contain'}} source={require('./asset/ReRoll_size1.png')}/>,
+        <Image style={{width: 36, height: 113, resizeMode: 'contain'}} source={require('./asset/ReRoll_size2.png')}/>,
+        <Image style={{width: 36, height: 113, resizeMode: 'contain'}} source={require('./asset/ReRoll_size3.png')}/>,
+        <Image style={{width: 36, height: 113, resizeMode: 'contain'}} source={require('./asset/ReRoll_size4.png')}/>,
+        <Image style={{width: 36, height: 113, resizeMode: 'contain'}} source={require('./asset/ReRoll_size5.png')}/>
+    ]
+
+    const [imageIndex, setImageIndex] = useState(0);
+
+    imageDown = () => {
+        if(imageIndex != imageList.length - 1) {
+            setTimeout(() => {
+                setImageIndex(imageIndex + 1);
+                imageDown();
+            }, 100);
+        }
+        else {
+            setTimeout(() => {
+                imageUp();
+            }, 500);
+        }
+    }
+
+    imageUp = () => {
+        if(imageIndex != 0) {
+            setTimeout(() => {
+                setImageIndex(imageIndex - 1);
+                imageUp();
+            }, 100);
+        }
+    }
+
     return(
         <View style={[props.style, style.jackPotHandllerContainer]}>
             <TouchableOpacity 
-                onPress={() => { props.onPress() }}
+                onPress={() => {
+                    imageDown();
+                    props.onPress();
+                }}
             >
-                <Image style={{width: 36, height: 113, resizeMode: 'contain'}} source={require('./asset/ReRoll.png')}/>
+                {imageList[imageIndex]}
             </TouchableOpacity>
             <Text style={[style.kbFont, style.smallText, {color: "#3E3E3E"}]}> 다시 돌려!! </Text>
         </View>
