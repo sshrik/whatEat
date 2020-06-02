@@ -4,12 +4,16 @@ import {
 } from 'react-native';
 
 const style = StyleSheet.create({
-    centerAlign: {alignItems: 'center', justifyContent: 'center'},
-    marginSide: {marginLeft: "3%", marginRight: "3%"},
-    kbFont: {fontFamily: "KBHand2019"},
-    largeText: {fontSize: 21},
-    middleText: {},
-    smallText: {fontSize: 14}
+    centerAlign: { alignItems: 'center', justifyContent: 'center' },
+    marginSide: { marginLeft: "3%", marginRight: "3%" },
+    kbFont: { fontFamily: "KBHand2019" },
+    largeText: { fontSize: 21 },
+    middleText: { fontSize: 14 },
+    smallText: { fontSize: 14 },
+    whereViewContainer: { height: 20, marginTop : 30 },
+    whereViewButtonContainer: { marginTop: 20, marginBottom: 20, height: 65, flexDirection: "row" },
+    whereViewButtonDirection: { flex: 1, flexDirection: "row" },
+    topMenuButton: { marginRight: 5, width: "30%", height: 32, borderRadius: 10 }
 })
 
 function WhereView(props) {
@@ -19,58 +23,62 @@ function WhereView(props) {
     const [tew, setTew] = useState(false);
 
     return(
-    <View style={[props.style, {flexDirection: "column"}]}>
-        <View style={{height: 20, marginTop : 30}}>
-            <Text style={[style.kbFont, style.largeText]}>어디에 있는걸 먹을까?</Text>
-        </View>
-        <View style={{marginTop: 20, marginBottom: 20, height: 65, flexDirection: "row"}}>
-            <View style={{flex: 1, flexDirection: "row"}}>
-                <TopMenuButton text="차타고" 
-                    selected={how} 
-                    onPress={() => {setHow(true)}}
-                />
-                <TopMenuButton text="걸어서" 
-                    selected={!how} 
-                    onPress={() => {setHow(false)}}
-                />
+        <View style={[props.style, {flexDirection: "column"}]}>
+            <View style={style.whereViewContainer}>
+                <Text style={[style.kbFont, style.largeText]}>어디에 있는걸 먹을까?</Text>
             </View>
-            <View style={{flex: 1, flexDirection: "row"}}>
-                <TopMenuButton text="5분" 
-                    selected={five} 
-                    onPress={() => {
-                        setFive(true);
-                        setTen(false);
-                        setTew(false);
-                    }}    
-                />
-                <TopMenuButton text="10분" 
-                    selected={ten} 
-                    onPress={() => {
-                        setFive(false);
-                        setTen(true);
-                        setTew(false);
-                    }}    
-                />
-                <TopMenuButton text="20분" 
-                    selected={tew} 
-                    onPress={() => {
-                        setFive(false);
-                        setTen(false);
-                        setTew(true);
-                    }}  
-                />
+            <View style={style.whereViewButtonContainer}>
+                <View style={style.whereViewButtonDirection}>
+                    <TopMenuButton 
+                        text="차타고" 
+                        selected={how} 
+                        onPress={() => {setHow(true)}}
+                    />
+                    <TopMenuButton 
+                        text="걸어서" 
+                        selected={!how} 
+                        onPress={() => {setHow(false)}}
+                    />
+                </View>
+                <View style={style.whereViewButtonDirection}>
+                    <TopMenuButton 
+                        text="5분" 
+                        selected={five} 
+                        onPress={() => {
+                            setFive(true);
+                            setTen(false);
+                            setTew(false);
+                        }}    
+                    />
+                    <TopMenuButton 
+                        text="10분" 
+                        selected={ten} 
+                        onPress={() => {
+                            setFive(false);
+                            setTen(true);
+                            setTew(false);
+                        }}    
+                    />
+                    <TopMenuButton 
+                        text="20분" 
+                        selected={tew} 
+                        onPress={() => {
+                            setFive(false);
+                            setTen(false);
+                            setTew(true);
+                        }}  
+                    />
+                </View>
             </View>
         </View>
-    </View>);
+    );
 }
 
 function TopMenuButton(props) {
-    let menuStyle = { marginRight: 5, width: "30%", height: 32, borderRadius: 10 };
-    console.log(props);
     if(props.selected) {
         return(
             <TouchableOpacity 
-                style={[style.centerAlign, menuStyle, { backgroundColor: "#FFA824" }]}
+                style={[style.centerAlign, style.topMenuButton, { backgroundColor: "#FFA824" }]}
                 onPress={() => {props.onPress()}}
             >
                 <Text style={[style.kbFont, style.smallText, {color: "#FFFFFF"}]}>{props.text}</Text>
@@ -80,7 +88,7 @@ function TopMenuButton(props) {
     else {
         return(
             <TouchableOpacity 
-                style={[style.centerAlign, menuStyle, { backgroundColor: "#FFFFFF" }]}
+                style={[style.centerAlign, style.topMenuButton, { backgroundColor: "#FFFFFF" }]}
                 onPress={() => {props.onPress()}}
             >
                 <Text style={[style.kbFont, style.smallText]}>{props.text}</Text>
@@ -91,16 +99,18 @@ function TopMenuButton(props) {
 
 function JackPotSelector(props) {
     return(
-    <View style={[props.style, {backgroundColor: "#FFFFFF"}]}>
+        <View style={[props.style, {backgroundColor: "#FFFFFF"}]}>
 
-    </View>)
+        </View>
+    )
 }
 
 function AdView(props) {
     return(
-    <View style={[props.style, style.centerAlign, {marginTop: 10, marginBottom: 10}]}>
-        <Image source={require('./asset/advertisement.png')} style={{flex:1, resizeMode: 'cover'}}/>
-    </View>)
+        <View style={[props.style, style.centerAlign, {marginTop: 10, marginBottom: 10}]}>
+            <Image source={require('./asset/advertisement.png')} style={{flex:1, resizeMode: 'cover'}}/>
+        </View>
+    )
 }
 
 function Footer(props) {
@@ -114,14 +124,15 @@ function Footer(props) {
 
 function App(props){
     return(
-    <SafeAreaView style={{flex: 1}}>
-        <View style={[{flex: 1, backgroundColor: "#F8F8F8"}, style.marginSide]}>
-            <WhereView style={{flex: 1}}></WhereView>
-            <JackPotSelector style={{flex: 1.5}}></JackPotSelector>
-            <AdView style={{flex: 1.5}}></AdView>
-            <Footer style={{flex: 0.2}}></Footer>
-        </View>
-    </SafeAreaView> );
+        <SafeAreaView style={{flex: 1}}>
+            <View style={[{flex: 1, backgroundColor: "#F8F8F8"}, style.marginSide]}>
+                <WhereView style={{flex: 1}}></WhereView>
+                <JackPotSelector style={{flex: 1.5}}></JackPotSelector>
+                <AdView style={{flex: 1.5}}></AdView>
+                <Footer style={{flex: 0.2}}></Footer>
+            </View>
+        </SafeAreaView> 
+    );
 }
 
 export default App;
